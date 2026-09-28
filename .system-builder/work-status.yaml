@@ -28,8 +28,8 @@ progress:
   in_progress: DEV-020
   next:
     recommended: DEV-020
-    reason: 'PR #1 i erland/pwa-simple-notes har grön Validate-CI för implementation
-      SHA 5ed231f; DEV-020 väntar på Pages-deployment och live-smoke efter merge.'
+    reason: 'PR #1 i erland/pwa-simple-notes har grön Validate-CI inklusive Playwright;
+      DEV-020 väntar på Pages-deployment och live-smoke efter merge.'
 blockers:
 - id: BLK-002
   status: open
@@ -48,22 +48,22 @@ verification:
   - Local HTTP smoke test for project Pages path
   - Validate canonical YAML against System Builder schemas
   - Verify ZIP integrity
-  - 'GitHub Actions Validate run 36384383505: npm ci, build, test, lint, typecheck,
-    verify:pwa (PASS)'
-  notes: Lokal verifiering och GitHub Validate på PR-implementation SHA 5ed231f PASS.
-    Browserprovet avstods på användarens begäran. DEV-020 väntar på Pages-deployment
-    efter merge.
+  - 'GitHub Actions Validate run 36403587959: npm ci, build, 18 tests, lint, typecheck, verify:pwa (PASS)'
+  - 'Playwright Chromium/WebKit: 5 passed, 1 skipped (offline WebKit), run 36403587959'
+  notes: GitHub Validate och Playwright på PR #1 PASS. Offline-start och lokal data
+    har provats i Chromium; WebKit har provat centrala UI-flöden. DEV-020 väntar
+    på Pages-deployment efter merge.
   verified_source:
     type: git_commit
-    revision: 5ed231f433af7536b95cf7aa34c368a7747f62fd
-    evidence: 'Validate run 36384383505 completed successfully for PR #1.'
+    revision: 81a5a3810290f17818f6bb6d32dfd55eb744cef5
+    evidence: 'Validate run 36403587959 completed successfully, including Playwright, for PR #1.'
   deferred:
-  - check: Installerbarhet, offline-start och Safari/Chromium-acceptans
-    reason: Användaren instruerade att browserprovet skulle hoppas över; fysisk browser
-      saknas i denna miljö.
+  - check: Fysisk installation och Safari på iPhone/iPad
+    reason: GitHub Actions provar Chromium och WebKit på Linux; fysisk enhet och installationsprompt
+      ingår inte i denna automatiska körning.
     classification: environment_limited
     release_blocking: false
-    retry_when: Om browserbaserad acceptans önskas före live deployment.
+    retry_when: Vid tillgång till fysisk enhet.
   - check: Live GitHub Pages-smoke
     reason: 'Pages-publicering sker först på default branch efter merge; PR #1 är
       ännu öppen.'
@@ -72,14 +72,14 @@ verification:
     retry_when: När Pages-workflowen publicerat main.
 source_state:
   drift: none
-  reference: 'PR #1, implementation SHA 5ed231f433af7536b95cf7aa34c368a7747f62fd'
+  reference: 'PR #1, implementation SHA 81a5a3810290f17818f6bb6d32dfd55eb744cef5'
 execution:
   next_action: unblock
   step: DEV-020
   operation: unblock
-  reason: Validate-CI passerar. Mergad main behövs för Pages-deployment och live-smoke.
+  reason: Validate-CI inklusive browserprov passerar. Mergad main behövs för Pages-deployment och live-smoke.
 completion:
   allowed: false
   waiting_for: DEV-020 Pages deployment and live HTTP smoke
-  implementation_revision: 5ed231f433af7536b95cf7aa34c368a7747f62fd
+  implementation_revision: 81a5a3810290f17818f6bb6d32dfd55eb744cef5
   evidence_status: blocked
