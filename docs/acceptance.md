@@ -1,6 +1,6 @@
 # Acceptance och verifiering v1.0.0
 
-Användaren har uttryckligen valt att hoppa över browserprovet. DEV-020 återstår eftersom inget repository och ingen publicerad URL finns för obligatorisk live-verifiering. Följande tabell skiljer automatiskt verifierade delar från de manuella kontrollpunkter som därmed inte har körts.
+Användaren har uttryckligen valt att hoppa över browserprovet. DEV-020 återstår eftersom GitHub Pages ännu inte har publicerats från main; PR #1 i `erland/pwa-simple-notes` är fortfarande öppen. Följande tabell skiljer automatiskt verifierade delar från de manuella kontrollpunkter som därmed inte har körts.
 
 | Krav | Evidens | Status |
 |---|---|---|
@@ -15,4 +15,4 @@ Användaren har uttryckligen valt att hoppa över browserprovet. DEV-020 återst
 | NFR-006 stort flöde | 3 000 poster och deterministisk sidindelning i test | PASS automatiskt |
 | NFR-008 integritet | inga nätverksanrop eller externa tjänster i appkod; data i IndexedDB | PASS kodgranskning |
 
-Körda lokala kommandon: `npm ci`, `npm run build`, `npm run verify:pwa`, `npm run test`, `npm run lint`, `npm run typecheck`. Den lokala Pages-pathen har HTTP-smoketestats för index, manifest, service worker och ikon. GitHub Actions och en live Pages-deployment har inte körts eftersom projektet levereras som ZIP utan anslutet repository.
+Körda lokala kommandon: `npm ci`, `npm run build`, `npm run verify:pwa`, `npm run test`, `npm run lint`, `npm run typecheck`. Den lokala Pages-pathen har HTTP-smoketestats för index, manifest, service worker och ikon. GitHub Actions Validate för PR #1 passerade på implementation SHA `5ed231f` (run `36384383505`). Pages-workflowen och live-smoke återstår efter merge till main.
