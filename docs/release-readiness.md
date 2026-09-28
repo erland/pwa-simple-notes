@@ -1,8 +1,8 @@
 # Releasebedömning – Simple Notes v1.0.0
 
-**Käll- och byggpaket: READY_WITH_WARNINGS.** Funktionerna enligt Must-scope är implementerade, och automatiska kontroller passerar. Browserbaserad offline-, installations- och responsivitetsacceptans avstods uttryckligen av användaren. CI-konfigurationen är skapad men kan inte visas grön förrän paketet läggs i ett GitHub-repository.
+**Käll- och byggpaket: READY_WITH_WARNINGS.** Funktionerna enligt Must-scope är implementerade, och automatiska kontroller passerar. Browserbaserad offline-, installations- och responsivitetsacceptans avstods uttryckligen av användaren. CI-konfigurationen finns i `erland/pwa-simple-notes` och GitHub Actions Validate har passerat för PR #1 på implementation SHA `5ed231f`.
 
-**DEV-020 och live deployment: NOT_READY / inte utförd.** Ingen publicerad URL eller fungerande Pages-installation kan rapporteras från detta ZIP-arbete. Workflow och installationsanvisning finns för nästa miljö.
+**DEV-020 och live deployment: NOT_READY / inte utförd.** Ingen publicerad URL eller fungerande Pages-installation kan rapporteras före merge av PR #1 till main. Workflow och installationsanvisning finns för nästa miljö.
 
 ## Kvarstående kända begränsningar
 
@@ -19,5 +19,6 @@
 - [x] Produktionsbuild och manifest/service worker-struktur.
 - [x] CI- och Pages-workflow samt installations- och driftdokumentation.
 - [x] Komplett projekt-ZIP utan `node_modules`, `dist` eller hemligheter.
-- [ ] GitHub CI och publicerad Pages-URL (kräver repository).
+- [x] GitHub Actions Validate på PR #1.
+- [ ] Publicerad Pages-URL och live HTTP-smoke efter merge.
 - [ ] Browserprov online/offline/installering och Safari/Chromium (uttryckligen avstått i denna leverans).
