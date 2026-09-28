@@ -1,0 +1,82 @@
+import { readFile } from 'node:fs/promises'
+import { expect, test } from '@playwright/test'
+
+async function addNote(page: import('@playwright/test').Page, text: string) {
+  await page.getByLabel('Skriv en anteckning').fill(text)
+  await page.getByRole('button', { name: 'Spara anteckning' }).click()
+  await expect(page.getByRole('article').filter({ hasText: text })).toBeVisible()
+}
+
+test('appskalet och anteckningarna fungerar offline efter första laddning', async ({ page, context, browserName }) => {
+  test.skip(browserName !== 'chromium', 'Service worker och offline provas i Chromium')
+  await page.goto('./')
+  await expect(page.getByRole('heading', { name: 'Simple Notes' })).toBeVisible()
+  await page.evaluate(() => navigator.serviceWorker.ready)
+  await page.reload()
+  await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller))
+  const manifest = await page.locator('link[rel="manifest"]').getAttribute('href')
+  expect(manifest).toContain('manifest.webmanifest')
+  await addNote(page, 'Sparad före offline')
+  await page.reload()
+  await expect(page.getByText('Sparad före offline')).toBeVisible()
+
+  await context.setOffline(true)
+  await page.reload()
+  await expect(page.getByRole('heading', { name: 'Simple Notes' })).toBeVisible()
+  await expect(page.getByText('Sparad före offline')).toBeVisible()
+  await addNote(page, 'Sparad utan nätverk')
+  await page.reload()
+  await expect(page.getByText('Sparad utan nätverk')).toBeVisible()
+  await expect(page.getByText('Sparad före offline')).toBeVisible()
+  await context.setOffline(false)
+  await page.reload()
+  await expect(page.getByText('Sparad utan nätverk')).toBeVisible()
+})
+
+test('backup och återställning kräver bekräftelse och bevarar innehåll', async ({ page }) => {
+  await page.goto('./')
+  await addNote(page, 'Originalanteckning')
+  await page.getByRole('button', { name: 'Data', exact: true }).click()
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Ladda ned backup' }).click()
+  const download = await downloadPromise
+  expect(download.suggestedFilename()).toMatch(/\.snotes$/)
+  const backup = await readFile(await download.path())
+  expect(JSON.parse(backup.toString()).data.notes).toHaveLength(1)
+
+  await page.getByRole('button', { name: 'Flöde' }).click()
+  await addNote(page, 'Tillfällig anteckning')
+  await page.getByRole('button', { name: 'Data', exact: true }).click()
+  await page.getByLabel('Välj .snotes-fil').setInputFiles({ name: 'backup.snotes', mimeType: 'application/json', buffer: backup })
+  await expect(page.getByText(/1 anteckningar och 0 sektioner/)).toBeVisible()
+  await page.getByRole('button', { name: 'Avbryt' }).click()
+  await page.getByRole('button', { name: 'Flöde' }).click()
+  await expect(page.getByText('Tillfällig anteckning')).toBeVisible()
+
+  await page.getByRole('button', { name: 'Data', exact: true }).click()
+  await page.getByLabel('Välj .snotes-fil').setInputFiles({ name: 'backup.snotes', mimeType: 'application/json', buffer: backup })
+  await page.getByRole('button', { name: 'Ja, ersätt alla data' }).click()
+  await expect(page.getByText(/Återställningen lyckades/)).toBeVisible()
+  await page.getByRole('button', { name: 'Flöde' }).click()
+  await expect(page.getByText('Originalanteckning')).toBeVisible()
+  await expect(page.getByText('Tillfällig anteckning')).toHaveCount(0)
+  await page.reload()
+  await expect(page.getByText('Originalanteckning')).toBeVisible()
+})
+
+test('mobilbredd fungerar utan horisontell sidscroll och möte kan skapas', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('./')
+  await expect(page.getByRole('heading', { name: 'Simple Notes' })).toBeVisible()
+  await page.getByRole('button', { name: '+ Nytt möte' }).click()
+  await page.getByLabel('Rubrik').fill('Planering')
+  await expect(page.getByLabel('Tid')).not.toHaveValue('')
+  await page.getByLabel('Deltagare, separerade med kommatecken').fill('Ada, Bo')
+  await page.getByRole('button', { name: 'Starta', exact: true }).click()
+  await expect(page.getByText(/I sektion: Planering/)).toBeVisible()
+  await addNote(page, 'Beslut från mötet')
+  await page.getByRole('button', { name: 'Avsluta sektion' }).click()
+  await addNote(page, 'Utanför mötet')
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)
+  expect(overflow).toBe(false)
+})
