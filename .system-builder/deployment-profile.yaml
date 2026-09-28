@@ -1,0 +1,36 @@
+schema_version: 1
+profile_name: github-pages-static-pwa
+packaging:
+  type: archive
+  image_registry: null
+  image_name: null
+  multi_stage_build: null
+  run_as_non_root: null
+target:
+  platform: other
+  environment: production
+runtime:
+  stateless: true
+  replicas: null
+  port: null
+  startup_command: null
+database:
+  type: none
+  deployment: none
+  migrations: null
+  connection_via_environment: null
+persistence:
+  application_files: none
+  volumes: []
+network:
+  reverse_proxy: external
+  tls: external
+  public_exposure: true
+  base_path: null
+health:
+  enabled: false
+  liveness_endpoint: null
+  readiness_endpoint: null
+  startup_endpoint: null
+configuration:
+  environment_variables: []

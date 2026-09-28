@@ -1,0 +1,416 @@
+schema_version: 1
+requirements:
+  FR-001:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-008
+    - DEV-009
+    acceptance_criteria: []
+    verification: []
+  FR-002:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-009
+    - DEV-016
+    acceptance_criteria: []
+    verification: []
+  FR-003:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-002
+    - DEV-009
+    acceptance_criteria: []
+    verification: []
+  FR-004:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-002
+    - DEV-009
+    acceptance_criteria: []
+    verification: []
+  FR-005:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-009
+    acceptance_criteria: []
+    verification: []
+  FR-010:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-010
+    acceptance_criteria: []
+    verification: []
+  FR-011:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-002
+    - DEV-010
+    acceptance_criteria: []
+    verification: []
+  FR-012:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-010
+    acceptance_criteria: []
+    verification: []
+  FR-013:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-011
+    acceptance_criteria: []
+    verification: []
+  FR-014:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-011
+    acceptance_criteria: []
+    verification: []
+  FR-015:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-011
+    acceptance_criteria: []
+    verification: []
+  FR-020:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-012
+    acceptance_criteria: []
+    verification: []
+  FR-021:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-012
+    acceptance_criteria: []
+    verification: []
+  FR-022:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-012
+    acceptance_criteria: []
+    verification: []
+  FR-023:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-012
+    acceptance_criteria: []
+    verification: []
+  FR-024:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-012
+    acceptance_criteria: []
+    verification: []
+  FR-025:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-012
+    - DEV-015
+    acceptance_criteria: []
+    verification: []
+  FR-030:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-013
+    acceptance_criteria: []
+    verification: []
+  FR-031:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-013
+    acceptance_criteria: []
+    verification: []
+  FR-032:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-013
+    - DEV-015
+    acceptance_criteria: []
+    verification: []
+  FR-040:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-014
+    acceptance_criteria: []
+    verification: []
+  FR-041:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-014
+    - DEV-015
+    acceptance_criteria: []
+    verification: []
+  FR-050:
+    priority: must
+    status: verified
+    development_steps:
+    - DEV-005
+    acceptance_criteria: []
+    verification: []
+  FR-051:
+    priority: must
+    status: verified
+    development_steps:
+    - DEV-005
+    acceptance_criteria: []
+    verification: []
+  FR-052:
+    priority: must
+    status: verified
+    development_steps:
+    - DEV-006
+    acceptance_criteria: []
+    verification: []
+  FR-053:
+    priority: must
+    status: verified
+    development_steps:
+    - DEV-006
+    - DEV-018
+    acceptance_criteria: []
+    verification: []
+  FR-054:
+    priority: must
+    status: verified
+    development_steps:
+    - DEV-006
+    - DEV-018
+    acceptance_criteria: []
+    verification: []
+  FR-055:
+    priority: must
+    status: verified
+    development_steps:
+    - DEV-006
+    acceptance_criteria: []
+    verification: []
+  FR-060:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-007
+    - DEV-019
+    acceptance_criteria: []
+    verification: []
+  FR-061:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-007
+    - DEV-020
+    acceptance_criteria: []
+    verification: []
+  NFR-001:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-008
+    - DEV-016
+    acceptance_criteria: []
+    verification: []
+  NFR-002:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-007
+    - DEV-019
+    acceptance_criteria: []
+    verification: []
+  NFR-003:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-008
+    - DEV-016
+    - DEV-019
+    acceptance_criteria: []
+    verification: []
+  NFR-004:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-003
+    - DEV-004
+    - DEV-017
+    - DEV-019
+    acceptance_criteria: []
+    verification: []
+  NFR-005:
+    priority: must
+    status: verified
+    development_steps:
+    - DEV-005
+    - DEV-006
+    - DEV-018
+    acceptance_criteria: []
+    verification: []
+  NFR-006:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-003
+    - DEV-016
+    acceptance_criteria: []
+    verification: []
+  NFR-007:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-008
+    - DEV-019
+    acceptance_criteria: []
+    verification: []
+  NFR-008:
+    priority: must
+    status: implemented
+    development_steps:
+    - DEV-017
+    - DEV-019
+    acceptance_criteria: []
+    verification: []
+development_steps:
+  DEV-001:
+    status: completed
+    requirements: []
+  DEV-002:
+    status: completed
+    requirements:
+    - FR-003
+    - FR-004
+    - FR-011
+  DEV-003:
+    status: completed
+    requirements:
+    - NFR-004
+    - NFR-006
+  DEV-004:
+    status: completed
+    requirements:
+    - NFR-004
+  DEV-005:
+    status: completed
+    requirements:
+    - NFR-005
+    - FR-050
+    - FR-051
+  DEV-006:
+    status: completed
+    requirements:
+    - NFR-005
+    - FR-052
+    - FR-053
+    - FR-054
+    - FR-055
+  DEV-007:
+    status: completed
+    requirements:
+    - NFR-002
+    - FR-060
+    - FR-061
+  DEV-008:
+    status: completed
+    requirements:
+    - NFR-001
+    - NFR-003
+    - NFR-007
+    - FR-001
+  DEV-009:
+    status: completed
+    requirements:
+    - FR-001
+    - FR-002
+    - FR-003
+    - FR-004
+    - FR-005
+  DEV-010:
+    status: completed
+    requirements:
+    - FR-010
+    - FR-011
+    - FR-012
+  DEV-011:
+    status: completed
+    requirements:
+    - FR-013
+    - FR-014
+    - FR-015
+  DEV-012:
+    status: completed
+    requirements:
+    - FR-020
+    - FR-021
+    - FR-022
+    - FR-023
+    - FR-024
+    - FR-025
+  DEV-013:
+    status: completed
+    requirements:
+    - FR-030
+    - FR-031
+    - FR-032
+  DEV-014:
+    status: completed
+    requirements:
+    - FR-040
+    - FR-041
+  DEV-015:
+    status: completed
+    requirements:
+    - FR-025
+    - FR-032
+    - FR-041
+  DEV-016:
+    status: completed
+    requirements:
+    - NFR-001
+    - NFR-003
+    - NFR-006
+    - FR-002
+  DEV-017:
+    status: completed
+    requirements:
+    - NFR-004
+    - NFR-008
+  DEV-018:
+    status: completed
+    requirements:
+    - NFR-005
+    - FR-053
+    - FR-054
+  DEV-019:
+    status: completed
+    requirements:
+    - NFR-002
+    - NFR-003
+    - NFR-004
+    - NFR-007
+    - NFR-008
+    - FR-060
+  DEV-020:
+    status: blocked
+    requirements:
+    - FR-061
+verification: {}

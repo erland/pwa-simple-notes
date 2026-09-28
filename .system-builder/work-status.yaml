@@ -1,0 +1,83 @@
+schema_version: 1
+active_work:
+  mode: CREATE
+  plan: docs/development-plan.md
+  change_request: null
+  selected_step: DEV-020
+progress:
+  completed:
+  - DEV-001
+  - DEV-002
+  - DEV-003
+  - DEV-004
+  - DEV-005
+  - DEV-006
+  - DEV-007
+  - DEV-008
+  - DEV-009
+  - DEV-010
+  - DEV-011
+  - DEV-012
+  - DEV-013
+  - DEV-014
+  - DEV-015
+  - DEV-016
+  - DEV-017
+  - DEV-018
+  - DEV-019
+  in_progress: DEV-020
+  next:
+    recommended: DEV-020
+    reason: Kod, paket och lokal verifiering klara; GitHub-repository och publicerad
+      Pages-URL krävs för live deployment och CI-evidens.
+blockers:
+- id: BLK-002
+  status: open
+  description: Inget GitHub-repository eller publicerad Pages-URL finns för DEV-020:s
+    obligatoriska remote CI/deployment-smoke.
+verification:
+  last_status: blocked
+  baseline: green
+  commands:
+  - npm ci
+  - npm run build (local and GitHub Pages base)
+  - npm run verify:pwa
+  - npm run test (18 tests)
+  - npm run lint
+  - npm run typecheck
+  - Local HTTP smoke test for project Pages path
+  - Validate canonical YAML against System Builder schemas
+  - Verify ZIP integrity
+  notes: Lokala automatiska kontroller PASS. Browserprovet avstods på användarens
+    begäran. DEV-020 har ingen live CI/deployment-evidens och är inte completed.
+  verified_source:
+    type: workspace_revision
+    revision: 2c2077871fc79b4334d21aeccf55dac54dc2d3a62717fff90d39ce299d331348
+    evidence: SHA-256 över källkod, konfigurering, workflows och package-lock efter
+      lokala kontroller.
+  deferred:
+  - check: Installerbarhet, offline-start och Safari/Chromium-acceptans
+    reason: Användaren instruerade att browserprovet skulle hoppas över; fysisk browser
+      saknas i denna miljö.
+    classification: environment_limited
+    release_blocking: false
+    retry_when: Om browserbaserad acceptans önskas före live deployment.
+  - check: Live GitHub Pages-smoke och remote CI
+    reason: Projektet levereras som ZIP utan anslutet GitHub-repository eller publicerad
+      URL.
+    classification: environment_limited
+    release_blocking: true
+    retry_when: När källkoden lagts i ett GitHub-repository och Pages publicerats.
+source_state:
+  drift: none
+  reference: Simple Notes v1.0.0 source ZIP
+execution:
+  next_action: unblock
+  step: DEV-020
+  operation: unblock
+  reason: Anslut GitHub-repository och kör CI/Pages innan DEV-020 kan slutföras.
+completion:
+  allowed: false
+  waiting_for: DEV-020 remote CI and live Pages deployment
+  implementation_revision: 2c2077871fc79b4334d21aeccf55dac54dc2d3a62717fff90d39ce299d331348
+  evidence_status: blocked
