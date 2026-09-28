@@ -1,0 +1,21 @@
+schema_version: 1
+project:
+  name: Simple Notes
+  type: offline-first-pwa
+  description: Personlig anteckningsapp med kronologiskt flöde, sektioner, åtgärder,
+    viktigt och lokal backup/restore.
+source:
+  mode: github
+  repository: erland/pwa-simple-notes
+  default_branch: main
+complexity: medium
+stack:
+  languages:
+  - TypeScript
+  frontend: React + TypeScript + Vite
+  backend: null
+  database: IndexedDB
+delivery:
+  packaging: static-pwa
+  target: GitHub Pages project site for erland/pwa-simple-notes
+  registry: null
